@@ -1,15 +1,19 @@
-const express = require('express');
-const consultaBancos = require('./mysql.js');
-const cors = require('cors');
+const express             = require('express');
+const consultaBancos      = require('./mysql.js');
+const cors                = require('cors');
 
 const server = express();
 
 const corsOptions ={
   origin:'http://localhost:5174', 
-  credentials:true,            //access-control-allow-credentials:true
+  credentials:true,            
   optionSuccessStatus:200
 }
 server.use(cors(corsOptions));
+
+server.listen(3000, () => {
+  console.log('Servidor está ativo na porta 3000');
+});
 
 server.get("/bancos", (request, response) => {
   consultaBancos()
@@ -38,6 +42,4 @@ server.get("/banco/:cod_compensacao", (request, response) => {
 
 });
 
-server.listen(3000, () => {
-  console.log('Servidor está ativo na porta 3000');
-});
+

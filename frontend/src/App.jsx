@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import './js/index.js'
+
  
 function App() {
   const [bancos, setBancos] = useState([]);
@@ -14,7 +14,6 @@ function App() {
       cod_compensacao = 0
     }
     
-    console.log(cod_compensacao)
     xhr.open("GET", `http://localhost:3000/banco/${cod_compensacao}`);
     xhr.responseType = "json";
     xhr.onload = () => {
